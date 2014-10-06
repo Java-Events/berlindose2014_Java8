@@ -37,6 +37,7 @@ public class Main {
 		System.out.println("==========");
 
 		final Stream<String> stringStream = generate.stream().map(value -> value.getTxt());
+		stringStream.forEach(System.out::println);
 
 	}
 }
