@@ -1,4 +1,4 @@
-package org.rapidpm.course.java8.jsr310;
+package org.rapidpm.course.java8.jsr310.lesson;
 
 import java.time.*;
 import java.time.temporal.TemporalAdjusters;
