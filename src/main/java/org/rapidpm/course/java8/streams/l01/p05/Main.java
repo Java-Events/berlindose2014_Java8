@@ -36,9 +36,7 @@ public class Main {
 		generate.stream().forEachOrdered(System.out::println);
 		System.out.println("==========");
 
-		final Stream<String> stringStream = generate.stream().map(value -> {
-			return value.getTxt();
-		});
+		final Stream<String> stringStream = generate.stream().map(value -> value.getTxt());
 
 	}
 }
