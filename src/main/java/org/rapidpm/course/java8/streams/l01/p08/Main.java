@@ -20,8 +20,7 @@ public class Main {
 		//		final List<Pair> collect3 = add.collect(Collectors.toList());
 		//		final Pair[] array = generate.toArray(Pair[]::new);
 
-		/*final Stream<String> map = */generator.generate().stream().map(Pair::getTxt).forEach(System.out::println);
+		/*final Stream<String> map = */generator.generate().stream().filter(v -> !"B".equals(v.getTxt())).map(Pair::getTxt).forEach(System.out::println);
 		;
 	}
-
 }
