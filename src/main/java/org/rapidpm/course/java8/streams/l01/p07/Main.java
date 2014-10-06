@@ -31,6 +31,10 @@ public class Main {
 //		});
 		
 		Stream<String> pairTxtStream = stream1.map(p -> p.getTxt());
+		
+		
+		Stream<String> filteredStream = pairTxtStream.filter(p -> !p.equals("B"));
+		filteredStream.forEach(System.out::println);
 
 	}
 
