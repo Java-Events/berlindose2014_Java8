@@ -1,6 +1,8 @@
 package org.rapidpm.course.java8.streams.l01.p07;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.rapidpm.course.java8.streams.model.Pair;
@@ -30,11 +32,14 @@ public class Main {
 //			return p.getTxt();
 //		});
 		
-		Stream<String> pairTxtStream = stream1.map(p -> p.getTxt());
+//		Stream<String> pairTxtStream = stream1.map(p -> p.getTxt());
 		
+//		Stream<String> filteredStream = pairTxtStream.filter(p -> !p.equals("B"));
+//		filteredStream.forEach(System.out::println);
 		
-		Stream<String> filteredStream = pairTxtStream.filter(p -> !p.equals("B"));
-		filteredStream.forEach(System.out::println);
+		List<String> stringList = Arrays.asList("AA", "AAX", "AAA", "AAAB", "AAAAB");
+		Optional<String> firstAAA = stringList.stream().filter(s -> s.contains("AAA")).findFirst();
+		System.out.println(firstAAA.get());
 
 	}
 
