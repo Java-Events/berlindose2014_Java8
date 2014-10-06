@@ -1,5 +1,7 @@
 package org.rapidpm.course.java8.lambdas.l01;
 
+import java.util.ArrayList;
+
 /**
  * Created by Sven Ruppert on 06.10.2014.
  */
@@ -45,16 +47,7 @@ public class Main {
        System.out.println("b = " + b);
    };
 
-
-
-
-
-
-
-
-
-
-
+    new ArrayList().forEach(System.out::print);
 
   }
 
