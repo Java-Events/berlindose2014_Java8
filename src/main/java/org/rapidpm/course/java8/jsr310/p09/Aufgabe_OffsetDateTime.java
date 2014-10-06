@@ -26,8 +26,12 @@ public class Aufgabe_OffsetDateTime {
         OffsetDateTime lastThursday =
                 dateOffset.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY));
 
-        System.out.printf("The last Thursday in April 2014 is the %sth.%n",
-                lastThursday.getDayOfMonth());
+        print(lastThursday.getDayOfMonth());
+	}
+
+	private static void print(int lastThursday) {
+		System.out.printf("The last Thursday in April 2014 is the %sth.%n",
+				lastThursday);
 	}
 
 	private static void printOffsetViaZoneId(LocalDateTime date) {
@@ -36,8 +40,7 @@ public class Aufgabe_OffsetDateTime {
         ZonedDateTime lastThursday =
         		zonedDateTime.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY));
 
-        System.out.printf("The last Thursday in April 2014 is the %sth.%n",
-                lastThursday.getDayOfMonth());
+        print(lastThursday.getDayOfMonth());
 	}
-    
+
 }
