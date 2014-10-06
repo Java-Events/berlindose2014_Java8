@@ -43,5 +43,8 @@ public class Main {
 		});
 
 		stringers.forEach(System.out::println);
+
+		generate.stream().filter(v -> !v.getTxt().equals("B")).forEach(System.out::println);
+
 	}
 }
