@@ -37,9 +37,14 @@ public class Main {
 //		Stream<String> filteredStream = pairTxtStream.filter(p -> !p.equals("B"));
 //		filteredStream.forEach(System.out::println);
 		
-		List<String> stringList = Arrays.asList("AA", "AAX", "AAA", "AAAB", "AAAAB");
-		Optional<String> firstAAA = stringList.stream().filter(s -> s.contains("AAA")).findFirst();
-		System.out.println(firstAAA.isPresent() ? firstAAA.get(): "not present");
+//		List<String> stringList = Arrays.asList("AA", "AAX", "AAA", "AAAB", "AAAAB");
+//		Optional<String> firstAAA = stringList.stream().filter(s -> s.contains("AAA")).findFirst();
+//		System.out.println(firstAAA.isPresent() ? firstAAA.get(): "not present");
+		
+		List<String> stringList = Arrays.asList("A", "B", "C", "D", "E");
+		Optional<String> reducedString = stringList.stream().reduce((s1, s2) -> s1.concat(s2));
+		System.out.println(reducedString.get());
+
 
 	}
 
