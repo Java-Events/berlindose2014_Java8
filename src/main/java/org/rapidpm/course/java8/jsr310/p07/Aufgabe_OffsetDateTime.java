@@ -1,7 +1,12 @@
 package org.rapidpm.course.java8.jsr310.p07;
 
-import java.time.*;
-import java.time.temporal.TemporalAccessor;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.time.temporal.TemporalAdjusters;
 
 /**
