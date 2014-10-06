@@ -1,5 +1,7 @@
 package org.rapidpm.course.java8.lang.l01.p05;
 
+import java.util.stream.Stream;
+
 /**
  * Created by Alexander Bischof on 20.08.2014.
  * <p>
@@ -16,6 +18,14 @@ public class Main {
 		System.out.println(alex.equals(alex2));
 		System.out.println("===========");
 
-	}
+		final IMacher macherImpl = (value) -> {
+			System.out.println(value);
+		};
 
+		macherImpl.mach("Krabappel");
+
+		final Stream<String> stream = Stream.<String> generate(() -> {
+			return "foo";
+		});
+	}
 }
