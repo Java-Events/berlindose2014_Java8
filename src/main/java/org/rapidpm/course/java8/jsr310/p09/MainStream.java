@@ -2,6 +2,7 @@ package org.rapidpm.course.java8.jsr310.p09;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,7 +13,7 @@ import org.rapidpm.course.java8.streams.model.Pair;
 /**
  * Created by Sven Ruppert on 06.10.2014.
  */
-public class Main {
+public class MainStream {
 
 	public static void main(String[] args) {
 		DemoValueGenerator generator = new DemoValueGenerator();
@@ -45,12 +46,16 @@ public class Main {
 	private static void handleStream(final Stream<Pair> stream) {
 		// collect(stream);
 
-		final Stream<Pair> streamFiltered = filter(stream);
+		// final Stream<Pair> streamFiltered = filter(stream);
 
-		final Stream<String> streamMapped = map(streamFiltered);
+		// final Stream<String> streamMapped = map(streamFiltered);
+		final Stream<String> streamMapped = map(stream);
 
-		// forEach_Print(streamMapped);
-		findFirst(streamMapped);
+		limit(streamMapped);
+
+		// // forEach_Print(streamMapped);
+		// findFirst(streamMapped);
+		reduce(streamMapped);
 	}
 
 	private static void collect(Stream<Pair> stream) {
@@ -82,6 +87,16 @@ public class Main {
 		return mapped;
 	}
 
+	private static void limit(Stream<String> stream) {
+		// final List<String> limited = stream.limit(2).collect(
+		// Collectors.toList());
+		// System.out.println(limited);
+
+		// final List<String> skipped = stream.skip(2)
+		// .collect(Collectors.toList());
+		// System.out.println(skipped);
+	}
+
 	private static <T> void forEach_Print(final Stream<T> stream) {
 		// stream.forEach(v -> System.out.println(v));
 		// stream.forEachOrdered(v -> System.out.println(v));
@@ -95,6 +110,27 @@ public class Main {
 				.orElse("not found");
 
 		System.out.println(string);
+	}
+
+	private static void reduce(Stream<String> stream) {
+		// final String reduced = stream.reduce("", (v1, v2) -> {
+		// return v1.concat(v2);
+		// });
+		//
+		// System.out.println(reduced);
+		final Optional<String> reduced = stream.reduce((v1, v2) -> {
+			return v1.concat(v2);
+		});
+
+		// TODO
+		// reduced.ifPresent(System.out::println).;
+		// System.out.println();
+		if (reduced.isPresent()) {
+			System.out.println(reduced.get());
+
+		} else {
+			System.out.println("Nüscht");
+		}
 	}
 
 }
