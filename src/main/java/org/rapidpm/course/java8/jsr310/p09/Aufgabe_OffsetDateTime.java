@@ -21,9 +21,13 @@ public class Aufgabe_OffsetDateTime {
     }
 
 	private static void printOffsetViaZoneOffset(LocalDateTime date) {
-		ZoneOffset offset = ZoneOffset.of("-02:00");
+		final ZoneOffset offset = ZoneOffset.of("-02:00");        
+        printUsingOffsetSolution(date, offset);
+	}
+
+	private static void printUsingOffsetSolution(LocalDateTime date, ZoneOffset offset) {
         OffsetDateTime dateOffset = OffsetDateTime.of(date, offset);
-        OffsetDateTime lastThursday =
+		OffsetDateTime lastThursday =
                 dateOffset.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY));
 
         print(lastThursday.getDayOfMonth());
@@ -37,7 +41,16 @@ public class Aufgabe_OffsetDateTime {
 	private static void printOffsetViaZoneId(LocalDateTime date) {
         final ZoneId zoneIdBerlin = ZoneId.of("Europe/Berlin");
         final ZonedDateTime zonedDateTime = date.atZone(zoneIdBerlin);
-        ZonedDateTime lastThursday =
+        
+        final ZoneOffset offset = zonedDateTime.getOffset();
+        printUsingOffsetSolution(date, offset);
+
+        printNotUsingOffsetSolution(zonedDateTime);
+	}
+
+	private static void printNotUsingOffsetSolution(
+			final ZonedDateTime zonedDateTime) {
+		ZonedDateTime lastThursday =
         		zonedDateTime.with(TemporalAdjusters.lastInMonth(DayOfWeek.THURSDAY));
 
         print(lastThursday.getDayOfMonth());
