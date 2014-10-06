@@ -1,8 +1,7 @@
 package org.rapidpm.course.java8.streams.l01.p05;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.rapidpm.course.java8.streams.l01.DemoValueGenerator;
@@ -27,17 +26,40 @@ public class Main {
 		});
 
 
-		final List<Pair> list = streamFromBuilder.collect(Collectors.toList());
-		final Set<Pair> set = streamFromList.collect(Collectors.toSet());
+		//		final List<Pair> list = streamFromBuilder.collect(Collectors.toList());
+		//		final Set<Pair> set = streamFromList.collect(Collectors.toSet());
 		//		final Map<Integer, List<Pair>> map = streamFromLambda.collect(Collectors.groupingBy(Pair::getCounter));
 
-		generate.forEach(System.out::println);
-		System.out.println("==========");
-		generate.stream().forEachOrdered(System.out::println);
-		System.out.println("==========");
+		//		generate.forEach(System.out::println);
+		//		System.out.println("==========");
 
-		final Stream<String> stringStream = generate.stream().map(value -> value.getTxt());
-		stringStream.forEach(System.out::println);
+		//		generate.stream().forEachOrdered(System.out::println);
+		//		System.out.println("==========");
+
+		final Stream<String> stringStream = generate.stream().parallel().map(value -> value.getTxt());
+		//		stringStream.forEach(System.out::println);
+		//		System.out.println("==========");
+
+		//		final Stream<String> filteredStringStream = stringStream.filter(value -> "B".equals(value));
+		//		filteredStringStream.forEach(System.out::println);
+		//		System.out.println("==========");
+
+		//		final String filtered = stringStream//
+		//				.filter(value -> value.contains("C"))//
+		//				.findFirst()//
+		//				.orElse("foo");
+		//
+		//		System.out.println(filtered);
+		//		System.out.println("==========");
+
+		final Optional<String> reduced = generate.stream()//
+				.map(value -> value.getTxt())//
+				.reduce((v1, v2) -> {
+					return v1.concat(v2);
+				});
+
+		System.out.println(reduced.get());
+		System.out.println("==========");
 
 	}
 }
