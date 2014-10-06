@@ -1,4 +1,4 @@
-package org.rapidpm.course.java8.streams.p01;
+package org.rapidpm.course.java8.streams.l01.p01;
 
 import java.util.List;
 import java.util.stream.Collectors;
