@@ -39,7 +39,7 @@ public class Main {
 		
 		List<String> stringList = Arrays.asList("AA", "AAX", "AAA", "AAAB", "AAAAB");
 		Optional<String> firstAAA = stringList.stream().filter(s -> s.contains("AAA")).findFirst();
-		System.out.println(firstAAA.get());
+		System.out.println(firstAAA.isPresent() ? firstAAA.get(): "not present");
 
 	}
 
