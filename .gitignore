@@ -3,3 +3,6 @@ out/*
 target
 .clover/*
 test-reports/*
+/.settings/
+/.classpath
+/.project
