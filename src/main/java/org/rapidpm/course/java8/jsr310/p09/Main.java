@@ -45,9 +45,12 @@ public class Main {
 	private static void handleStream(final Stream<Pair> stream) {
 		// collect(stream);
 
-		// forEach(stream);
+		final Stream<Pair> streamFiltered = filter(stream);
 
-		map(stream);
+		final Stream<String> streamMapped = map(streamFiltered);
+
+		// forEach_Print(streamMapped);
+		findFirst(streamMapped);
 	}
 
 	private static void collect(Stream<Pair> stream) {
@@ -65,19 +68,33 @@ public class Main {
 		System.out.println(collectedGroupingBy);
 	}
 
-	private static void forEach(final Stream<Pair> stream) {
+	private static Stream<Pair> filter(Stream<Pair> stream) {
+		return stream.filter(v -> !"b".equalsIgnoreCase(v.getTxt()));
+	}
+
+	private static Stream<String> map(Stream<Pair> stream) {
+		// Von Pair auf String mappen
+		final Stream<String> mapped = stream.map(v -> {
+			final String txt = v.getTxt();
+			return txt;
+		});
+
+		return mapped;
+	}
+
+	private static <T> void forEach_Print(final Stream<T> stream) {
 		// stream.forEach(v -> System.out.println(v));
 		// stream.forEachOrdered(v -> System.out.println(v));
 		// stream.forEachOrdered(v -> System.out.println(v));
-		Consumer consumer = System.out::println;
+		Consumer<? super T> consumer = System.out::println;
 		stream.forEachOrdered(consumer);
 	}
 
-	private static void map(Stream<Pair> stream) {
-		// Von Pair auf String mappen
-		// stream.map(v -> {
-		//
-		//
-		// });
+	private static void findFirst(Stream<String> stream) {
+		final String string = stream.filter(o -> o.contains("A")).findFirst()
+				.orElse("not found");
+
+		System.out.println(string);
 	}
+
 }
